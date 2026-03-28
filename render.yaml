@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: django-render-deploy
+    runtime: python
+    plan: free
+    autoDeploy: true
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn myproject.wsgi:application"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: DEBUG
+        value: False
+      - key: ALLOWED_HOSTS
+        value: .onrender.com
+
+
+
